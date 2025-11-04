@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>گالری رونیا — صفحه اصلی</title>
+  <style>
+    :root{--gold:#c99b2a;--bg:#0b0b0c;--card:#0f0f10;--muted:#cfcfcf}
+    body{margin:0;font-family:Tahoma,'Vazir',sans-serif;background:linear-gradient(180deg,#050505,#0b0b0c);color:#fff}
+    .wrap{max-width:980px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:88px;height:88px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#ffd27a);display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:18px}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin-top:6px}
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+    .info{font-size:14px;color:var(--muted);line-height:1.6}
+    .price{color:var(--gold);font-weight:800;font-size:22px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--gold);color:#111;text-decoration:none;font-weight:600}
+    .admin-link{background:#222;padding:8px;border-radius:8px;text-decoration:none;color:var(--muted);display:inline-block;margin-top:8px}
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
+    .live-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    @media(max-width:880px){.hero{grid-template-columns:1fr}.gallery img{height:120px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">رونیا</div>
+      <div>
+        <h1>گالری رونیا</h1>
+        <p class="lead">به گالری رونیا خوش آمدید — اصالت و کیفیت تضمین‌شده</p>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h2 style="margin-top:0">قیمت زنده</h2>
+        <div class="live-row">
+          <div>
+            <div class="info">طلا (گرم ۱۸ عیار)</div>
+            <div id="goldPrice" class="price">در حال دریافت...</div>
+            <div class="info" id="goldTime"></div>
+          </div>
+          <div style="text-align:left">
+            <div class="info">سکه (تمام)</div>
+            <div id="coinPrice" class="price">در حال دریافت...</div>
+            <div class="info" id="coinTime"></div>
+          </div>
+        </div>
+
+        <p class="info">قیمت‌ها از TGJU‌ (https://www.tgju.org) گرفته می‌شوند. برای عملکرد واقعی و پایدار، در Vercel یا Netlify باید متغیرهای محیطی `TGJU_API_URL` و `TGJU_API_KEY` را تنظیم کنید. اگر این متغیرها تنظیم نشوند، سایت از دادهٔ نمونه استفاده خواهد کرد.</p>
+      </div>
+
+      <aside class="card">
+        <h3>تماس و اطلاعات</h3>
+        <p class="info">آدرس: (در صورت تمایل وارد کنید)<br>تلفن: <strong>09140426343</strong></p>
+        <p class="info">تلگرام: <a id="tgLink" href="https://t.me/yourchannel" target="_blank" style="color:var(--muted)">@yourchannel</a></p>
+        <p style="margin-top:8px"><a class="btn" href="tel:09140426343">تماس سریع</a></p>
+        <div style="margin-top:12px">
+          <a class="admin-link" href="#admin" id="openAdmin">ورود ادمین</a>
+        </div>
+      </aside>
+    </section>
+
+    <section style="margin-top:18px" class="card">
+      <h3 style="margin-top:0">گالری محصولات</h3>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/800x600?text=محصول+۱" alt="محصول 1">
+        <img src="https://via.placeholder.com/800x600?text=محصول+۲" alt="محصول 2">
+        <img src="https://via.placeholder.com/800x600?text=محصول+۳" alt="محصول 3">
+        <img src="https://via.placeholder.com/800x600?text=محصول+۴" alt="محصول 4">
+      </div>
+    </section>
+
+    <section style="margin-top:18px" class="card">
+      <h3 style="margin-top:0">قوانین و ضمانت</h3>
+      <ul class="info">
+        <li>تمامی اجناس دارای فاکتور و ضمانت اصالت می‌باشند.</li>
+        <li>قبل از خرید لطفاً تماس بگیرید تا آخرین قیمت را تأیید کنید.</li>
+      </ul>
+    </section>
+
+    <footer>
+      © 2025 گالری رونیا — تلفن: 09140426343
+    </footer>
+  </div>
+
+  <!-- Admin modal (local) -->
+  <div id="adminPanel" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);color:#fff;padding:28px;overflow:auto;z-index:9999">
+    <div style="max-width:720px;margin:0 auto">
+      <h2>پنل ادمین — گالری رونیا</h2>
+      <div id="adminArea" style="display:none">
+        <p class="info">محصولات نمونه و تنظیمات قابل مشاهده است.</p>
+        <div class="card" style="margin-top:12px">
+          <h4>محصولات</h4>
+          <ul id="productList" class="info"></ul>
+        </div>
+        <div style="margin-top:12px">
+          <button id="logoutBtn" class="btn">خروج</button>
+        </div>
+      </div>
+
+      <div id="loginArea">
+        <p class="info">برای ورود، رمز عبور ادمین را وارد کنید.</p>
+        <input id="adminPass" type="password" style="padding:8px;border-radius:8px;border:none;width:100%;margin-bottom:8px">
+        <div style="display:flex;gap:8px">
+          <button id="loginBtn" class="btn">ورود</button>
+          <button id="closeAdmin" class="admin-link">بستن</button>
+        </div>
+        <p class="info" style="margin-top:12px;color:#f4b400">هشدار: این روش فقط برای تست محلی مناسب است. برای محافظت واقعی از پنل، از Netlify Identity یا Cloudflare Access استفاده کنید.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // تنظیمات اولیه
+    const shop = {
+      name: 'گالری رونیا',
+      phone: '09140426343',
+      telegram: 'https://t.me/yourchannel',
+      adminPassword: 'mahdy.1390' // رمز ادمین که شما فرستادید
+    }
+    document.querySelector('h1').textContent = shop.name
+    document.querySelector('.lead').textContent = 'به ' + shop.name + ' خوش آمدید — اصالت و کیفیت تضمینی'
+    document.getElementById('tgLink').href = shop.telegram
+
+    // فراخوانی API سروری که باید در Vercel/Netlify ساخته شود: /api/tgju
+    async function fetchServerPrice(){
+      try {
+        const r = await fetch('/api/tgju') // اگر در Vercel deploy کنی، این endpoint باید وجود داشته باشد
+        if(!r.ok) throw new Error('no server api')
+        const j = await r.json()
+        // انتظار ساختار: { gold_18_per_gram: "...", coin_full: "...", timestamp: "..." }
+        document.getElementById('goldPrice').textContent = j.gold_18_per_gram || 'دریافت نشد'
+        document.getElementById('goldTime').textContent = j.timestamp ? new Date(j.timestamp).toLocaleTimeString() : ''
+        document.getElementById('coinPrice').textContent = j.coin_full || 'دریافت نشد'
+        document.getElementById('coinTime').textContent = j.timestamp ? new Date(j.timestamp).toLocaleTimeString() : ''
+        return true
+      } catch(e){
+        return false
+      }
+    }
+
+    // fallback نمونه (اگر سرور نیست، دادهٔ نمونه نمایش می‌دهد)
+    function setSamplePrices(){
+      document.getElementById('goldPrice').textContent = '2,700,000 تومان'
+      document.getElementById('goldTime').textContent = new Date().toLocaleTimeString()
+      document.getElementById('coinPrice').textContent = '35,500,000 تومان'
+      document.getElementById('coinTime').textContent = new Date().toLocaleTimeString()
+    }
+
+    async function updatePrices(){
+      const ok = await fetchServerPrice()
+      if(!ok) setSamplePrices()
+    }
+
+    // به‌صورت پیش‌فرض هر 5 ثانیه آپدیت می‌شود. (برای درخواست‌های ثانیه‌ای باید قرارداد API را چک کنید)
+    updatePrices()
+    setInterval(updatePrices, 5000)
+
+    // Admin modal logic (local)
+    const adminPanel = document.getElementById('adminPanel')
+    const openAdmin = document.getElementById('openAdmin')
+    const closeAdmin = document.getElementById('closeAdmin')
+    const loginBtn = document.getElementById('loginBtn')
+    const logoutBtn = document.getElementById('logoutBtn')
+
+    openAdmin.addEventListener('click', (e)=>{ e.preventDefault(); adminPanel.style.display='block' })
+    closeAdmin.addEventListener('click', ()=>{ adminPanel.style.display='none' })
+
+    loginBtn.addEventListener('click', ()=>{
+      const pass = document.getElementById('adminPass').value
+      if(pass === shop.adminPassword){
+        document.getElementById('loginArea').style.display='none'
+        document.getElementById('adminArea').style.display='block'
+        loadSampleProducts()
+      } else alert('رمز اشتباه است')
+    })
+
+    logoutBtn.addEventListener('click', ()=>{ document.getElementById('adminArea').style.display='none'; document.getElementById('loginArea').style.display='block'; document.getElementById('adminPass').value=''; })
+
+    function loadSampleProducts(){
+      const list = document.getElementById('productList')
+      list.innerHTML = ''
+      const sample = [
+        {name:'گردنبند طلای ۱۸k', price:'3,200,000 تومان'},
+        {name:'دستبند ۲۲k', price:'2,450,000 تومان'}
+      ]
+      sample.forEach(p=>{ const li=document.createElement('li'); li.textContent = p.name + ' — ' + p.price; list.appendChild(li) })
+    }
+  </script>
+</body>
+</html>
